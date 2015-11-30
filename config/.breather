@@ -1,12 +1,18 @@
 module.exports.settings = {
-  "duration": "25",
+  "duration": "0.1",
   "location": "Paris,fr",
   "lang": "en"
 }
 
 module.exports.pre = function() {
-  // var applescript = require("applescript")
+  var applescript = require("applescript")
 
+  var vlc = 'tell application "VLC" \n\
+  if playing then \n\
+    play \n\
+  end if \n\
+end tell';
+  applescript.execString( vlc, function(err, rtn) {} )
   // var twitter = 'tell application "Finder" to set visible of process "Twitter" to false'
   // , limechat = 'tell application "Finder" to set visible of process "LimeChat" to false'
 
