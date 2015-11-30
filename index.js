@@ -42,7 +42,7 @@ function checkWeather() {
 function clock() {
   bar.update()
 
-  if ( !bar.complete ) return setTimeout( clock, 1000 )
+  if ( !bar.complete ) return setTimeout( clock, 20*60*1000 )
 
   post()
 
@@ -58,38 +58,41 @@ function clock() {
 
   console.log("\n> " + i18n.breakNotification)
 
-  var rl = readline.createInterface({
-    input: process.stdin,
-    output: process.stdout
-  })
+  programme()
 
-  rl.question("\n" + i18n.anotherSessionQuestion + " (Y/time/n) ", function( answer ) {
-    var intAnswer = parseInt( answer, 10 )
+  // var rl = readline.createInterface({
+  //   input: process.stdin,
+  //   output: process.stdout
+  // })
 
-    if ( !isNaN( intAnswer ) ) {
-      settings.duration = intAnswer
+  // rl.question("\n" + i18n.anotherSessionQuestion + " (Y/time/n) ", function( answer ) {
+  //   var intAnswer = parseInt( answer, 10 )
 
-      fs.writeFile("./config/settings.json", JSON.stringify( settings, null, 2 ), function ( err ) {
-        if (err) throw err
-      })
-    }
+  //   if ( !isNaN( intAnswer ) ) {
+  //     settings.duration = intAnswer
 
-    if ( answer !== "n" && answer !== "N" ) {
-      programme()
-    }
-    else {
-      console.log( "\n" + i18n.byeBye)
-    }
+  //     fs.writeFile("./config/settings.json", JSON.stringify( settings, null, 2 ), function ( err ) {
+  //       if (err) throw err
+  //     })
+  //   }
+    
 
-    rl.close()
-  })
+  //   if ( answer !== "n" && answer !== "N" ) {
+  //     programme()
+  //   }
+  //   else {
+  //     console.log( "\n" + i18n.byeBye)
+  //   }
+
+    // rl.close()
+  // })
 
 }
 
 // intro
 function intro() {
   console.log("\n" + new Date())
-  console.log("  ____                 _   _               ")
+  console.log("  Gaurav says hi ____                 _   _               ")
   console.log(" | __ ) _ __ ___  __ _| |_| |__   ___ _ __ ")
   console.log(" |  _ \\| '__/ _ \\/ _` | __| '_ \\ / _ \\ '__|")
   console.log(" | |_) | | |  __/ (_| | |_| | | |  __/ |   ")
