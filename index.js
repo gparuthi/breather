@@ -38,11 +38,20 @@ function checkWeather() {
   })
 }
 
+function showNotif(){
+    notifier.notify({
+    title: i18n.title,
+    message: i18n.breakNotification,
+    icon: path.join(__dirname, '../resources/icon.png')
+  })
+
+}
+
 // clock
 function clock() {
-  bar.update()
+  bar.update();
 
-  if ( !bar.complete ) return setTimeout( clock, 20000 )
+  if ( !bar.complete ) return setTimeout( clock, 1000 )
 
   post()
 
@@ -52,40 +61,10 @@ function clock() {
     icon: path.join(__dirname, '../resources/icon.png')
   })
 
-  // if( settings.location ) {
-  //   checkWeather()
-  // }
-
   console.log("\n> " + i18n.breakNotification)
 
   programme()
 
-  // var rl = readline.createInterface({
-  //   input: process.stdin,
-  //   output: process.stdout
-  // })
-
-  // rl.question("\n" + i18n.anotherSessionQuestion + " (Y/time/n) ", function( answer ) {
-  //   var intAnswer = parseInt( answer, 10 )
-
-  //   if ( !isNaN( intAnswer ) ) {
-  //     settings.duration = intAnswer
-
-  //     fs.writeFile("./config/settings.json", JSON.stringify( settings, null, 2 ), function ( err ) {
-  //       if (err) throw err
-  //     })
-  //   }
-    
-
-  //   if ( answer !== "n" && answer !== "N" ) {
-  //     programme()
-  //   }
-  //   else {
-  //     console.log( "\n" + i18n.byeBye)
-  //   }
-
-    // rl.close()
-  // })
 
 }
 
@@ -103,8 +82,12 @@ function intro() {
 
 // programme
 function programme() {
+  
+
   duration = parseFloat( settings.duration )
 
+  showNotif()
+  
   // init bar
   bar = new ProgressBar(i18n.progressBar, {
       total: duration * 60
@@ -121,7 +104,7 @@ function programme() {
   pre()
 
   // start process
-  setTimeout( clock, 20*60*1000 )
+  setTimeout( clock, 1000 )
 }
 
 // variables
