@@ -44,6 +44,12 @@ An example is given, it hides and shows Twitter and Limechat on Mac OS X.
 $ breather
 ```
 
+## Build
+
+```
+$ npm install ./ -g
+```
+
 ## Advice
 
 Some pieces of advice to give your eyes a rest.
