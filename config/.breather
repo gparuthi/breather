@@ -1,5 +1,5 @@
 module.exports.settings = {
-  "duration": "0.1",
+  "duration": "20",
   "location": "Paris,fr",
   "lang": "en"
 }
