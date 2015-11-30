@@ -42,7 +42,7 @@ function checkWeather() {
 function clock() {
   bar.update()
 
-  if ( !bar.complete ) return setTimeout( clock, 20*60*1000 )
+  if ( !bar.complete ) return setTimeout( clock, 20000 )
 
   post()
 
@@ -121,7 +121,7 @@ function programme() {
   pre()
 
   // start process
-  setTimeout( clock, 1000 )
+  setTimeout( clock, 20*60*1000 )
 }
 
 // variables
